@@ -45,7 +45,12 @@ app.get("/api/notes", function (req, res) {
         if (error) {
             console.log(error)
         }
-        let jsonParse = JSON.parse(data)
+        let jsonParse
+        try {jsonParse = [].concat (JSON.parse(data))
+
+        }catch (error)  {
+            jsonParse= []
+        }
         return res.json(jsonParse);
 
     });
@@ -106,13 +111,15 @@ app.get("/api/notes", function (req, res) {
                 return (note.id !== req.params.id)
 
             })
-            fs.writeFile(path.join(__dirname, './db/db.json'), parse, function (error) {
+            fs.writeFile(path.join(__dirname, './db/db.json'), JSON.stringify(parse), function (error) {
                 if (error) {
                     console.log(error);
 
                 }
             })
-            return res.json(parse);
+            return res.json({
+                    ok: true
+            });
 
         })
     })
