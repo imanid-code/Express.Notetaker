@@ -27,7 +27,7 @@ const hide = (elem) => {
 // activeNote is used to keep track of the note in the textarea
 let activeNote = {};
 
-//this will be a function in server.js that getNotes() which will equal gotNotesthis gotdata from getnotes and return got data as a string 
+ 
 //the server will get the input information 
 const getNotes = () =>
   fetch('/api/notes', {
@@ -37,12 +37,9 @@ const getNotes = () =>
     },
   });
 
-  //in server.js postedNote will equal the req.body 
-  //gotNotes will = getNotes()
-  //then gotNotes/getNotes will push ... the rest of postedNote, 
-  //
-  //postedNote will = req.body 
-  //NOTE will be put into the body?
+  
+  //postedNote will = req.body in server
+  //NOTE will be put into the body
   //what is taken from the body will be put into a string ?
 const saveNote = (note) =>
   fetch('/api/notes', {
@@ -104,7 +101,8 @@ const handleNoteDelete = (e) => {
   //the specific event is note? 
   const note = e.target;
   const noteId = JSON.parse(note.parentElement.getAttribute('data-note')).id;
-
+//looking for prop id 
+//add prop in backend 
   if (activeNote.id === noteId) {
     activeNote = {};
   }
@@ -138,8 +136,11 @@ const handleRenderSaveBtn = () => {
   }
 };
 
-//????
+//?????
 // Render the list of note titles
+//renderNoteList is an async function called notes will have a var of jsonNotes = the function notes
+//notes will be turned into a json 
+//if pathname is notes then each element ________ 
 const renderNoteList = async (notes) => {
   let jsonNotes = await notes.json();
   if (window.location.pathname === '/notes') {
