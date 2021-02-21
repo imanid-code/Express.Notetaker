@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 8080;
 //built in mothod in express that recognizes incoming request object as JSON object
 app.use(express.json());
 
-//????built in method in express to recognize incoming request object as strings or array
+//built in method in express to recognize incoming request object as strings or array
 app.use(express.urlencoded({ extended: true }));
 
 //files that clients downloas from server 
@@ -125,44 +125,7 @@ app.get("/api/notes", function (req, res) {
     })
 
 
-    //read file db.json , adding id prop before posting new note(inside post ) , don't have to do on front end 
-    //manually change whats on db.json or clear out and start fresh , locate file that has the same id as the one that was clicked 
-    //
-
-
-    //postedNotes will equal noteInput which also equals getNotes in index.js
-    //the array noteInput will be reduced to 
-    //The accumulator accumulates callback's return values, if not callback first item in array will be init value  
-    //The current element being processed in the array.
-
-    // const postedNOtes = noteInput.reduce((accumlator, currentValue) => {
-    //     if(currentValue.id !== noteId) accumlator.push(curr);
-    //     return accumlator;
-    // }, []);
-
-
-
-
-
-    //write function 
-
-    // const writeIt = (type) => {
-
-    //     let jsonParse = JSON.parse
-    //    fs.writeFile('./db/db.json',JSON.stringify(jsonParse), err => {
-    //                 if (err) throw err;
-    //                 return true;
-    //             }
-
-    //         );
-    //         return console.log(`jsonParse ${type}`);
-
-    //     }}
-
-    // )
-
-    // })
-    //listener to start server 
+  
 
     app.listen(PORT, function () {
         console.log("App is listening on PORT: " + PORT);

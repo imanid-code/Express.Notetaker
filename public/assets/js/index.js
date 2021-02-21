@@ -38,9 +38,7 @@ const getNotes = () =>
   });
 
   
-  //postedNote will = req.body in server
-  //NOTE will be put into the body
-  //what is taken from the body will be put into a string ?
+  
 const saveNote = (note) =>
   fetch('/api/notes', {
     method: 'POST',
@@ -62,7 +60,7 @@ const deleteNote = (id) =>
 
 const renderActiveNote = () => {
   hide(saveNoteBtn);
-//where is id coming from? 
+
   if (activeNote.id) {
     noteTitle.setAttribute('readonly', true);
     noteText.setAttribute('readonly', true);
@@ -73,36 +71,28 @@ const renderActiveNote = () => {
     noteText.value = '';
   }
 };
-//handleNoteSave is going to do a function called newNote which will have a title = notetitle & text = notetext 
 const handleNoteSave = () => {
   const newNote = {
     title: noteTitle.value,
     text: noteText.value,
   };
-  //SaveNote as defined on line 49 will POST to api/notes usign JSON to stringigy it to the page
-  //then getandrender notes will get notes from database and render(show)them on sidebar
-  //if activenote.id set notevariables 
+  
   saveNote(newNote).then(() => {
     getAndRenderNotes();
     renderActiveNote();
   });
 };
 
-// Delete the clicked note
+
 //e stands for event 
 const handleNoteDelete = (e) => {
-  // prevents the click listener for the list from being called when the button inside of it is clicked
- //Propagation means bubbling up to parent elements or capturing down to child elements.
-
+  
   e.stopPropagation();
 
-  //returns the element that triggers specific event 
-  //?????
-  //the specific event is note? 
+
   const note = e.target;
   const noteId = JSON.parse(note.parentElement.getAttribute('data-note')).id;
-//looking for prop id 
-//add prop in backend 
+
   if (activeNote.id === noteId) {
     activeNote = {};
   }
@@ -114,8 +104,7 @@ const handleNoteDelete = (e) => {
   });
 };
 
-// Sets the activeNote and displays it
-//?
+
 const handleNoteView = (e) => {
   e.preventDefault();
   activeNote = JSON.parse(e.target.parentElement.getAttribute('data-note'));
@@ -127,7 +116,6 @@ const handleNewNoteView = (e) => {
   activeNote = {};
   renderActiveNote();
 };
-//if the title and text have a value , trim it and hide save button if they don't have value show save button
 const handleRenderSaveBtn = () => {
   if (!noteTitle.value.trim() || !noteText.value.trim()) {
     hide(saveNoteBtn);
@@ -136,11 +124,7 @@ const handleRenderSaveBtn = () => {
   }
 };
 
-//?????
-// Render the list of note titles
-//renderNoteList is an async function called notes will have a var of jsonNotes = the function notes
-//notes will be turned into a json 
-//if pathname is notes then each element ________ 
+
 const renderNoteList = async (notes) => {
   let jsonNotes = await notes.json();
   if (window.location.pathname === '/notes') {
