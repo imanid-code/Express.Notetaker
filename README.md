@@ -1,7 +1,11 @@
 
 
 # Express Notetaker
+
+[Walkthrough Video](https://drive.google.com/file/d/11RnHljIv0bC-5YkxRITstGY-KazG1iGQ/view)
     
+[Heroku Link](https://expressnotetaker0224.herokuapp.com/)
+
 ## Description
 
    

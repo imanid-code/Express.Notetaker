@@ -8,7 +8,7 @@ const fs = require("fs");
 
 const app = express();
 //Heroku doesn't work on port number so you have to use process.env.PORT
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8000;
 
 //Middleware set up
 //built in mothod in express that recognizes incoming request object as JSON object
